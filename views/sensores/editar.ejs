@@ -7,12 +7,12 @@
       <div class="container">
           <% if(messages.erro) { %>
             <div class="alert alert-danger alert-dismissible fade show col-md-6 mx-auto" role="alert">
-              <%=messages.erro %>
+             <i class="fa fa-exclamation-triangle fa-lg"></i> <%=messages.erro %>
             </div>
           <% } %>
           <% if(messages.info) { %>
             <div class="alert alert-success alert-dismissible fade show col-md-6 mx-auto" role="alert">
-              <%=messages.info %>
+              <i class="fa fa-check-circle fa-lg"></i> <%=messages.info %>
             </div>
           <% } %>
         <div class="jumbotron bg-dark col-md-6 mx-auto">

@@ -4,16 +4,16 @@
   <% include ../partials/header %>
   <body>
     <main class="conteiner">
-      <% if(messages.erro) { %>
-          <div class="alert alert-danger alert-dismissible fade show col-md-8 mx-auto" role="alert">
-            <%=messages.erro %>
+        <% if(messages.erro) { %>
+          <div class="alert alert-danger alert-dismissible fade show col-md-6 mx-auto" role="alert">
+           <i class="fa fa-exclamation-triangle fa-lg"></i> <%=messages.erro %>
           </div>
-      <% } %>
-      <% if(messages.info) { %>
-          <div class="alert alert-success alert-dismissible fade show col-md-8 mx-auto" role="alert">
-            <%=messages.info %>
+        <% } %>
+        <% if(messages.info) { %>
+          <div class="alert alert-success alert-dismissible fade show col-md-6 mx-auto" role="alert">
+            <i class="fa fa-check-circle fa-lg"></i> <%=messages.info %>
           </div>
-      <% } %>
+        <% } %>
       <div class="jumbotron bg-dark col-md-6 mx-auto">
         <h1 class="text-left">Editar<a href="/usuarios" class="btn btn-primary float-right">Voltar</a></h1>
       </h1>

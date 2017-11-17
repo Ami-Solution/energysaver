@@ -14,10 +14,10 @@ module.exports = function(app) {
             var senha = req.body.senha;
             Usuario.findOne({'user': user}, function(err, data){
                 if (err){
-                    req.flash('erro','Erro ao entrar no sistema!');
+                    req.flash('erro','Ops, ocorreu um erro ao entrar no sistema!');
                     res.redirect('/');
                 }else if (!data){
-                    req.flash('erro','Nome de usuario nao encontrado!');
+                    req.flash('erro','Nome de usuário não encontrado, tente outro!');
                     res.redirect('/');
                 }else if (!usuario.validPassword(senha, data.senha)){
                     req.flash('erro','Senha incorreta!');

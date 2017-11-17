@@ -5,68 +5,49 @@
   <body>
   <br>
     <% if(messages.erro) { %>
-      <div class="alert alert-danger alert-dismissible fade show col-md-11 mx-auto" role="alert">
-        <%=messages.erro %>
+      <div class="alert alert-danger alert-dismissible fade show col-md-12 mx-auto" role="alert">
+      <i class="fa fa-exclamation-triangle fa-lg"></i> <%=messages.erro %>
       </div>
     <% } %>
     <% if(messages.info) { %>
-      <div class="alert alert-success alert-dismissible fade show col-md-11 mx-auto" role="alert">
-        <%=messages.info %>
+      <div class="alert alert-success alert-dismissible fade show col-md-12 mx-auto" role="alert">
+        <i class="fa fa-check-circle fa-lg"></i> <%=messages.info %>
       </div>
     <% } %>
     <div class="conteiner">
-        <h2> <%= user.nome %> 
-          <button type="button" class="float-right btn-sm btn-danger fa fa-trash" data-toggle="modal" data-target="#exampleModal"></button>
-        </h2>
-        <hr>
-        <h5>Perfil:</h5>
-        <p class="ml-2"> Email: <%= user.email %> </p>
-        <hr>
-        <p class="ml-2"> Username: <%= user.user %> </p>
-        <hr>
-        <p class="ml-2"> Nascimento: <%= user.nascimento %> </p>
-        <hr>
-        <h3>Adicionar sensor
-          <span>&nbsp;</span>
-          <button class="btn btn-sm btn-primary add">&plus;</button>
-        </h3>        
-        <div class="addSensor">
-          <form action="/usuarios/user/<%= user._id %>/sensores/adicionar" method="post">
-            <input type="text" class="form-control d-none" value="<%= session.user %>" name="user" value="<%=sensor.user || '' %>">
-            <div class="row mb-2">
-              <div class="input-group col-md-3">
-                <span class="input-group-addon bg-dark text-white">Nome</span>
-                <input type="text" class="form-control" name="name_sensor" required placeholder="ex.: corrente-01">
+      <div class="row">
+        <div class="col-12 col-md-4 mb-3">
+          <div class="card float-left bg-dark text-light mb-2" style="width: 21rem;">
+              <div class="card-body">
+                <h4 class="card-title p-3 text-capitalize"> 
+                  <i class="fa fa-user-circle">&nbsp;</i>
+                  <%= user.nome.split(' ')[0] +' '+user.nome.split(' ')[1] %> 
+                  <button type="button" class="float-right btn-sm btn-danger fa fa-trash" data-toggle="modal" data-target="#exampleModal"></button>
+                </h4>
               </div>
-              <div class="input-group col-md-3">
-                <span class="input-group-addon bg-dark text-white">Tipo </span>
-                <input type="text" class="form-control" name="type_sensor" required placeholder="ex.: corrente">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><span class="w-35"> <b>Username:</b> </span> <span class="w-50"> <%= user.user %> </span></li>
+                <li class="list-group-item"><span class="w-35"> <b>Email:</b> </span> <span class="w-50"> <%= user.email %> </span></li>
+                <li class="list-group-item"><span class="w-35"> <b>Nascimento:</b> </span> <span class="w-50"> <%= user.nascimento %> </span></li>
+              </ul>
+              <div class="card-body py-2 ml-4">
+                <span class="float-left mt-1 w-35"><b>Sensores:</b> </span> <span class=" float-right w-50"> <a href='/usuarios/user/<%= session._id %>/sensores' ><button class="btn btn-primary" >Meus sensores</button></a></span>                
               </div>
-            </div>
-            <div class="row mb-2">
-                <div class="input-group col-md-3">
-                    <span class="input-group-addon bg-dark text-white">Modelo </span>
-                    <input type="text" class="form-control" name="model_sensor" required placeholder="ex.: SCT-013">
-                  </div>
-                <div class="input-group col-md-3">
-                  <span class="input-group-addon bg-dark text-white">Local </span>
-                  <input type="text" class="form-control" name="local" required placeholder="ex.: labic">
-                </div>
-              </div>
-              <div class="row mb-2">
-                <div class="input-group col-md-3">
-                  <span class="input-group-addon bg-dark text-white">Dispositivo </span>
-                  <input type="text" class="form-control" name="device" required placeholder="ex.: raspberry pi">
-                </div>
-                <div class="col-md-3">
-                  <button type="submit" class="btn btn-outline-primary btn-block">Adicionar</button>
-                </div>
-              </div>
-          </form>
+          </div>
         </div>
-      <br>
-      <a href='/usuarios/user/<%= session._id %>/sensores' ><button class="btn btn-primary" >Meus sensores</button></a>        
+        <div class="col-12 col-md-8">
+          <h3>Adicionar sensor
+            <span>&nbsp;</span>
+            <button class="btn btn-sm btn-primary add">&plus;</button>
+          </h3>
+          <a href="/usuarios/user/<%=session._id%>/sensores/adicionar" class="btn btn-primary">
+            Adicionar
+          </a>
+          <hr>        
+        </div>
+      </div>
       <a href="/usuarios/" class="btn btn-primary float-right">Voltar</a>
+      <br>
     </div>
   </body>
   <% include ../partials/footer %>

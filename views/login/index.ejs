@@ -7,8 +7,8 @@
     <body>
       <main class="conteiner">
       <% if (messages.erro){ %>
-        <div class="alert alert-warning col-md-4 mx-auto" role="alert">          
-          <%= messages.erro %>
+        <div class="alert alert-danger col-md-4 mx-auto" role="alert">          
+          <i class="fa fa-exclamation-triangle fa-lg"></i> <%= messages.erro %>
         </div>
       <% } %>
         <div class="jumbotron bg-dark col-md-4 mx-auto text-center">

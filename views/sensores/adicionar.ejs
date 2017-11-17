@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <% include ../partials/head %>
+  <% include ../partials/header %>
+  <body>
+  <br>
+    <% if(messages.erro) { %>
+      <div class="alert alert-danger alert-dismissible fade show col-md-6 mx-auto" role="alert">
+       <i class="fa fa-exclamation-triangle fa-lg"></i> <%=messages.erro %>
+      </div>
+    <% } %>
+    <% if(messages.info) { %>
+      <div class="alert alert-success alert-dismissible fade show col-md-6 mx-auto" role="alert">
+        <i class="fa fa-check-circle fa-lg"></i> <%=messages.info %>
+      </div>
+    <% } %>
+    <div class="conteiner">
+        <div class="jumbotron bg-dark col-md-6 mx-auto">
+            <h1 class="text-left mb-4">Adicionar
+                <a href="/usuarios/user/<%= session._id%>/sensores" class="btn btn-primary float-right">Voltar</a>
+            </h1>
+            <form class="col-md-10 mx-auto" action="/usuarios/user/<%= session._id %>/sensores/adicionar" method="post">
+                <div class="row mb-2">
+                  <div class="input-group">
+                    <span class="input-group-addon col-5 col-md-3 bg-dark text-white">Nome</span>
+                    <input type="text" class="form-control d-none" name="user" value="<%=session.user%>">                
+                    <input type="text" class="form-control" name="name_sensor" value="<%=sensor.name_sensor%>" required placeholder="ex.: corrente-01">
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="input-group">
+                    <span class="input-group-addon col-5 col-md-3 bg-dark text-white">Tipo </span>
+                    <input type="text" class="form-control" name="type_sensor" value="<%=sensor.type_sensor%>" required placeholder="ex.: corrente">
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="input-group">
+                    <span class="input-group-addon col-5 col-md-3 bg-dark text-white">Modelo </span>
+                    <input type="text" class="form-control" name="model_sensor" value="<%=sensor.model_sensor%>" required placeholder="ex.: ACS712">
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="input-group">
+                    <span class="input-group-addon col-5 col-md-3 bg-dark text-white">Local </span>
+                    <input type="text" class="form-control" name="local" value="<%=sensor.local%>" required placeholder="ex.: labic">
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="input-group">
+                    <span class="input-group-addon col-5 col-md-3 bg-dark text-white">Dispositivo </span>
+                    <input type="text" class="form-control" name="device" value="<%=sensor.device%>" required placeholder="ex.: labic">
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="input-group">
+                    <button class="btn btn-primary btn-block mx-auto">Salvar</button>
+                  </div>
+                </div>
+              </form>
+        </div>       
+      <a href="/usuarios/" class="btn btn-primary float-right">Voltar</a>
+      <br>
+    </div>
+  </body>
+  <% include ../partials/footer %>
+</html>

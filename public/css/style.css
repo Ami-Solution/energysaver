@@ -42,7 +42,9 @@ img {
     padding: 2% 5%;
 }
 
-
+.w-35 {
+    width: 35%;
+}
 /*COLORS*/
 
 .list-group-item {

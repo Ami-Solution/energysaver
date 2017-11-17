@@ -4,23 +4,26 @@
   <% include ../partials/header %>
   <body>
   <br>
-  <main class="conteiner">
-      <% if(messages.erro) { %>
-        <div class="alert alert-danger alert-dismissible fade show col-md-11 mx-auto" role="alert">
-          <%=messages.erro %>
-        </div>
-      <% } %>
-      <% if(messages.info) { %>
-        <div class="alert alert-success alert-dismissible fade show col-md-11 mx-auto" role="alert">
-          <%=messages.info %>
-        </div>
-      <% } %>
-      <div class="container px-0">
-          <h3> <%= session.nome %> 
+  <main class="conteiner mb-0">
+      <div class="container">
+          <% if(messages.erro) { %>
+            <div class="alert alert-danger alert-dismissible fade show col-md-12 mx-auto" role="alert">
+             <i class="fa fa-exclamation-triangle fa-lg"></i> <%=messages.erro %>
+            </div>
+          <% } %>
+          <% if(messages.info) { %>
+            <div class="alert alert-success alert-dismissible fade show col-md-12 mx-auto" role="alert">
+              <i class="fa fa-check-circle fa-lg"></i> <%=messages.info %>
+            </div>
+          <% } %>
+
+          <h3> 
+            <i class="fa fa-user-circle"></i> 
+            <%= session.nome.split(' ')[0] +' '+session.nome.split(' ')[1] %>  
             <a href="/usuarios/user/<%=session._id %>" class="btn btn-primary float-right">Voltar</a>
           </h3>
           <br>
-          <h4> Meus Sensores </h4>
+          <h5><i class="fa fa-microchip fa-sm"></i> Meus Sensores <a href="/usuarios/user/<%=session._id%>/sensores/adicionar" class="btn btn-primary float-right">Adicionar</a> </h5>
           <hr>
         
           <% if (sensor.length == 0) { %>
@@ -29,7 +32,7 @@
             <% for (var i = 0; i< sensor.length; i++) { %>
             <div class="card float-left bg-dark text-light ml-2 mb-2" style="width: 20rem;">
               <div class="card-body">
-                <h4 class="card-title p-3 text-capitalize"> <%= sensor[i].name_sensor %> </h3>
+                <h4 class="card-title p-3"></i> <%= sensor[i].name_sensor %> </h3>
               </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item"><span class="w-50"> Tipo: </span> <span class="w-50"> <%= sensor[i].type_sensor %> </span></li>

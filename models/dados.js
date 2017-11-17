@@ -6,6 +6,7 @@ module.exports = function() {
         local: { type: String, trim: true },
         device: { type: String, trim: true },
         name_sensor: { type: String, trim: true },
+        id_sensor: { type: String, trim: true },
         day: { type: String, trim: true },
         hour: { type: String, trim: true },
         type_sensor: { type: String, trim: true },

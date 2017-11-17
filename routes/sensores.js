@@ -4,7 +4,9 @@ module.exports = function(app) {
 
     app.route('/usuarios/user/:id_user/sensores').get(autenticar, sensores.index);
     
-    app.route('/usuarios/user/:id_user/sensores/adicionar').post(autenticar, sensores.adicionar);
+    app.route('/usuarios/user/:id_user/sensores/adicionar')
+        .get(autenticar, sensores.adicionar)
+        .post(autenticar, sensores.post);
 
     app.route('/usuarios/user/:id_user/sensores/sensor/:id_sensor').get(autenticar, sensores.sensor);
 

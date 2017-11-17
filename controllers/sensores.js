@@ -19,22 +19,25 @@ module.exports = function(app) {
                 });
             });
         },
-        adicionar: function(req,res){
+        adicionar: function(req, res){
+            res.render('sensores/adicionar',{sensor: new Sensores()});
+        },
+        post: function(req,res){
             Sensores.findOne({'name_sensor':req.body.name_sensor, 'user':req.body.user}, function(err, sensor){
                 if(err){
                     req.flash('erro','Erro ao buscar sensor: '+err);
-                    res.redirect('/usuarios/user/'+req.params.id_user);
+                    res.render('sensores/adicionar', {sensor: req.body});
                 }else if (sensor){
-                    req.flash('erro','Este sensor ja se encontra no banco de dados, tente outro.')
-                    res.redirect('/usuarios/user/'+req.params.id_user);
+                    req.flash('erro','Este sensor já se encontra no banco de dados, tente outro.')
+                    res.render('sensores/adicionar', {sensor: req.body});
                 }else{
                     model = new Sensores(req.body);
                     model.save(function(err){
                         if (err){
                             req.flash('erro','Erro ao adicionar sensor');
-                            res.redirect('/usuarios/user/'+req.params.id_user);
+                            res.render('sensores/adicionar', {sensor: req.body});
                         }else{
-                            req.flash('info','Sensor adicionado!');
+                            req.flash('info','Sensor adicionado com sucesso!');
                             res.redirect('/usuarios/user/'+req.params.id_user+'/sensores');
                         }
                     });
@@ -42,13 +45,13 @@ module.exports = function(app) {
             });
             
         },
-        delete:  function(req, res) {
+        delete: function(req, res) {
             Sensores.remove({_id:req.params.id_sensor}, function(err, sensor){
                 if (err){
                     req.flash('erro','Erro ao excluir sensor: '+err);
                     res.redirect('/usuarios/user/'+req.params.id_user+'/sensores/');
                 } else{
-                    req.flash('info','Sensor excluido com sucesso!');
+                    req.flash('info','Sensor excluído!');
                     res.redirect('/usuarios/user/'+req.params.id_user+'/sensores/'); 
                 }
             });
@@ -74,7 +77,7 @@ module.exports = function(app) {
                             req.flash('erro', 'Erro ao buscar sensor: '+err);
                             res.redirect('/usuarios/user/'+req.params.id_user+'/sensores');
                         }else if (data){
-                            req.flash('erro','Este sensor ja existe na sua lista, tente outro nome ou volte!');
+                            req.flash('erro','Este sensor já existe na sua lista, tente outro nome!');
                             res.render('sensores/editar',{sensor:req.body});
                         }else {
                             var model = sensor;
@@ -85,7 +88,7 @@ module.exports = function(app) {
                             model.local = req.body.local;
                             model.save(function(err){
                                 if (err){
-                                    req.flash('erro', 'Erro ao editar sensor');
+                                    req.flash('erro', 'Erro ao atualizar dados do sensor!');
                                     res.render('sensores/editar', {sensor:data});
                                 }else {
                                     req.flash('info', 'Dados do sensor atualizados!');
@@ -111,12 +114,12 @@ module.exports = function(app) {
                     device = sensor.device;
 
                     var query = {'name_sensor':nome,'user':user,'type_sensor':tipo, 'model_sensor':modelo, 'local':local,'device': device};
+                    //var query = {'_id': req.params.id_sensor};
                     Dados.find(query, function(err, data){
                         if (err){
                             req.flash('erro', 'Erro ao buscar sensor: '+err);
                             res.redirect('/usuarios/user/'+req.params.id_user+'/sensores');
                         }else {
-                            console.log(sensor);
                             configs.all_data_csv_generator(data);
                             res.render('sensores/sensor', {sensor:sensor, dados:data});
                         }

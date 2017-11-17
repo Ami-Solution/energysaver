@@ -8,7 +8,6 @@ module.exports = function(){
         type_sensor  : { type: String, trim: true },
         local: { type: String, trim: true },
         device: { type: String, trim: true }
-
     },{
         versionKey: false
     });
