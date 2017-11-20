@@ -8,10 +8,12 @@
       <main class="conteiner">
       <% if (messages.erro){ %>
         <div class="alert alert-danger col-md-4 mx-auto" role="alert">          
-          <i class="fa fa-exclamation-triangle fa-lg"></i> <%= messages.erro %>
+          <i class="fa fa-exclamation-triangle fa-lg"></i>
+          <span>&nbsp;</span>
+          <%= messages.erro %>
         </div>
       <% } %>
-        <div class="jumbotron bg-dark col-md-4 mx-auto text-center">
+        <div class="jumbotron bg-dark col-md-3 mx-auto text-center">
           <form method="post" action="/">
             <h1 class="display-4">Login</h1>
             <input class="form-control" type="text" placeholder="Username" name="user" autofocus required>
