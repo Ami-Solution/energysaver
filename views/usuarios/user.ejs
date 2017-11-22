@@ -28,11 +28,11 @@
                   </div>
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item"><span class="w-35"> <b>Username:</b> </span> <span class="w-50"> <%= user.user %> </span></li>
-                    <li class="list-group-item"><span class="w-20"> <b>Email:</b> </span> <span class="w-75"> <%= user.email %> </span></li>
+                    <li class="list-group-item"><span>&nbsp;</span> <b>Email:</b>  <span class="w-75"> <%= user.email %> </span></li>
                     <li class="list-group-item"><span class="w-35"> <b>Nascimento:</b> </span> <span class="w-50"> <%= user.nascimento %> </span></li>
                   </ul>
                   <div class="card-body py-2 ml-4">
-                    <span class="float-left mt-1 w-35"><b>Sensores:</b> </span> <span class=" float-right w-50"> <a href='/usuarios/user/<%= session._id %>/sensores' ><button class="btn btn-primary" >Meus sensores</button></a></span>                
+                    <span class="float-left mt-1 w-35"><b>Sensores:</b> </span> <span class=" float-left w-50"> <a href='/usuarios/user/<%= session._id %>/sensores' ><button class="btn btn-primary" >Meus sensores</button></a></span>                
                   </div>
               </div>
             </div>
