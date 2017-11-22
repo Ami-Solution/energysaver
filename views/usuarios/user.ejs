@@ -4,50 +4,52 @@
   <% include ../partials/header %>
   <body>
   <br>
-    <% if(messages.erro) { %>
-      <div class="alert alert-danger alert-dismissible fade show col-md-12 mx-auto" role="alert">
-      <i class="fa fa-exclamation-triangle fa-lg"></i> <%=messages.erro %>
-      </div>
-    <% } %>
-    <% if(messages.info) { %>
-      <div class="alert alert-success alert-dismissible fade show col-md-12 mx-auto" role="alert">
-        <i class="fa fa-check-circle fa-lg"></i> <%=messages.info %>
-      </div>
-    <% } %>
-    <div class="conteiner">
-      <div class="row">
-        <div class="col-12 col-md-4 mb-3">
-          <div class="card float-left bg-dark text-light mb-2" style="width: 21rem;">
-              <div class="card-body">
-                <h4 class="card-title p-3 text-capitalize"> 
-                  <i class="fa fa-user-circle">&nbsp;</i>
-                  <%= user.nome.split(' ')[0] +' '+user.nome.split(' ')[1] %> 
-                  <button type="button" class="float-right btn-sm btn-danger fa fa-trash" data-toggle="modal" data-target="#exampleModal"></button>
-                </h4>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item"><span class="w-35"> <b>Username:</b> </span> <span class="w-50"> <%= user.user %> </span></li>
-                <li class="list-group-item"><span class="w-35"> <b>Email:</b> </span> <span class="w-50"> <%= user.email %> </span></li>
-                <li class="list-group-item"><span class="w-35"> <b>Nascimento:</b> </span> <span class="w-50"> <%= user.nascimento %> </span></li>
-              </ul>
-              <div class="card-body py-2 ml-4">
-                <span class="float-left mt-1 w-35"><b>Sensores:</b> </span> <span class=" float-right w-50"> <a href='/usuarios/user/<%= session._id %>/sensores' ><button class="btn btn-primary" >Meus sensores</button></a></span>                
-              </div>
+    <div class="container">
+        <% if(messages.erro) { %>
+          <div class="alert alert-danger alert-dismissible fade show col-md-12 mx-auto" role="alert">
+          <i class="fa fa-exclamation-triangle fa-lg"></i> <%=messages.erro %>
           </div>
+        <% } %>
+        <% if(messages.info) { %>
+          <div class="alert alert-success alert-dismissible fade show col-md-12 mx-auto" role="alert">
+            <i class="fa fa-check-circle fa-lg"></i> <%=messages.info %>
+          </div>
+        <% } %>
+        <div class="conteiner">
+          <div class="row">
+            <div class="col-12 col-md-4 mb-3">
+              <div class="card float-left bg-dark text-light mb-2" style="width: 20.6rem;">
+                  <div class="card-body">
+                    <h4 class="card-title p-3 text-capitalize"> 
+                      <i class="fa fa-user-circle">&nbsp;</i>
+                      <%= user.nome.split(' ')[0] +' '+user.nome.split(' ')[1] %> 
+                      <button type="button" class="float-right btn-sm btn-danger fa fa-trash" data-toggle="modal" data-target="#exampleModal"></button>
+                    </h4>
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><span class="w-35"> <b>Username:</b> </span> <span class="w-50"> <%= user.user %> </span></li>
+                    <li class="list-group-item"><span class="w-20"> <b>Email:</b> </span> <span class="w-75"> <%= user.email %> </span></li>
+                    <li class="list-group-item"><span class="w-35"> <b>Nascimento:</b> </span> <span class="w-50"> <%= user.nascimento %> </span></li>
+                  </ul>
+                  <div class="card-body py-2 ml-4">
+                    <span class="float-left mt-1 w-35"><b>Sensores:</b> </span> <span class=" float-right w-50"> <a href='/usuarios/user/<%= session._id %>/sensores' ><button class="btn btn-primary" >Meus sensores</button></a></span>                
+                  </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-12">
+              <h3>Adicionar sensor
+                <span>&nbsp;</span>
+                <button class="btn btn-sm btn-primary add">&plus;</button>
+              </h3>
+              <a href="/usuarios/user/<%=session._id%>/sensores/adicionar" class="btn btn-primary">
+                Adicionar
+              </a>
+              <hr>        
+            </div>
+          </div>
+          <a href="/home" class="btn btn-primary float-right">Voltar</a>
+          <br>
         </div>
-        <div class="col-12 col-md-8">
-          <h3>Adicionar sensor
-            <span>&nbsp;</span>
-            <button class="btn btn-sm btn-primary add">&plus;</button>
-          </h3>
-          <a href="/usuarios/user/<%=session._id%>/sensores/adicionar" class="btn btn-primary">
-            Adicionar
-          </a>
-          <hr>        
-        </div>
-      </div>
-      <a href="/usuarios/" class="btn btn-primary float-right">Voltar</a>
-      <br>
     </div>
   </body>
   <% include ../partials/footer %>

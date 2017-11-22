@@ -4,74 +4,71 @@
   <% include ../partials/header %>
   <body>
   <br>
-    <% if(messages.erro) { %>
-      <div class="alert alert-danger alert-dismissible fade show col-md-10 mx-auto" role="alert">
-      <i class="fa fa-exclamation-triangle fa-lg"></i> <%=messages.erro %>
-      </div>
-    <% } %>
-    <% if(messages.info) { %>
-      <div class="alert alert-success alert-dismissible fade show col-md-10 mx-auto" role="alert">
-        <i class="fa fa-check-circle fa-lg"></i> <%=messages.info %>
-      </div>
-    <% } %>
-    <div class="conteiner">
-        <div class="row">
-          <div class="col-sm-12 col-md-3 mb-4">
-            <div class="card float-left bg-dark text-light ml-2 mb-2" style="width: 20rem;">
-                <div class="card-body">
-                  <h4 class="card-title p-3"> <%= sensor.name_sensor %> 
-                    <a class="float-right" href="/usuarios/user/<%= session._id %>/sensores/editar/<%= sensor._id %>">
-                    <button type="button" class="btn btn-primary">
-                      <i class="fa fa-pencil"></i>
-                    </button>
-                  </a> </h3>
-                </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item"><span class="w-25"> ID: </span> <span class="w-50"> <%= sensor._id %> </span></li>                  
-                  <li class="list-group-item"><span class="w-50"> Tipo: </span> <span class="w-50"> <%= sensor.type_sensor %> </span></li>
-                  <li class="list-group-item"><span class="w-50"> Modelo: </span> <span class="w-50"> <%= sensor.model_sensor %> </span></li>
-                  <li class="list-group-item"><span class="w-50"> Dispositivo: </span> <span class="w-50"> <%= sensor.device %> </span></li>
-                  <li class="list-group-item"><span class="w-50"> Local: </span> <span class="w-50"> <%= sensor.local %> </span></li>
-                  <li class="list-group-item"><span class="w-50"> Dados: </span> <span class="w-50 total-atual"> <%= dados.length %> </span></li>
-                </ul> 
-                <div class="card-body p-3 text-center">
-                    <span class=" float-left w-25 mt-2"> Opções: </span>
-                    <span class=" float-left w-75">
-                        <a title="Visualizar Grafico" class="btn btn-primary" href="/usuarios/user/<%= session._id %>/sensores/sensor/<%= sensor._id %>/grafico">
-                          <i class="fa fa-line-chart"></i>
-                        </a>
-                        <a title="Download de todos os <%= dados.length %> dados" href="/download" class="btn btn-success">
-                          <i class="fa fa-download"></i>
-                        </a>
-                        <button title="Excluir sensor" type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
-                          <i class="fa fa-trash fa-lg"></i>
+    <div class="container">
+        <% if(messages.erro) { %>
+          <div class="alert alert-danger alert-dismissible fade show col-md-10 mx-auto" role="alert">
+          <i class="fa fa-exclamation-triangle fa-lg"></i> <%=messages.erro %>
+          </div>
+        <% } %>
+        <% if(messages.info) { %>
+          <div class="alert alert-success alert-dismissible fade show col-md-10 mx-auto" role="alert">
+            <i class="fa fa-check-circle fa-lg"></i> <%=messages.info %>
+          </div>
+        <% } %>
+        <div class="conteiner">
+            <div class="row">
+              <div class="col-sm-12 col-md-3 mb-4">
+                <div class="card float-left bg-dark text-light mb-2" style="width: 20.5rem;">
+                    <div class="card-body">
+                      <h4 class="card-title p-3"> <%= sensor.name_sensor %> 
+                        <a class="float-right" href="/usuarios/user/<%= session._id %>/sensores/editar/<%= sensor._id %>">
+                        <button type="button" class="btn btn-primary">
+                          <i class="fa fa-pencil"></i>
                         </button>
-                    </span>
-                </div>
+                      </a> </h3>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item"><span class="w-25"> ID: </span> <span class="w-50"> <%= sensor._id %> </span></li>                  
+                      <li class="list-group-item"><span class="w-50"> Tipo: </span> <span class="w-50"> <%= sensor.type_sensor %> </span></li>
+                      <li class="list-group-item"><span class="w-50"> Modelo: </span> <span class="w-50"> <%= sensor.model_sensor %> </span></li>
+                      <li class="list-group-item"><span class="w-50"> Dispositivo: </span> <span class="w-50"> <%= sensor.device %> </span></li>
+                      <li class="list-group-item"><span class="w-50"> Local: </span> <span class="w-50"> <%= sensor.local %> </span></li>
+                      <li class="list-group-item"><span class="w-50"> Dados: </span> <span class="w-50 total-atual"> <%= dados.length %> </span></li>
+                    </ul> 
+                    <div class="card-body p-3 text-center">
+                        <span class=" float-left w-25 mt-2"> Opções: </span>
+                        <span class=" float-left w-75">
+                            <a title="Visualizar Grafico" class="btn btn-primary" href="/usuarios/user/<%= session._id %>/sensores/sensor/<%= sensor._id %>/grafico">
+                              <i class="fa fa-line-chart"></i>
+                            </a>
+                            <a title="Download de todos os <%= dados.length %> dados" href="/download" class="btn btn-success">
+                              <i class="fa fa-download"></i>
+                            </a>
+                            <button title="Excluir sensor" type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                              <i class="fa fa-trash fa-lg"></i>
+                            </button>
+                        </span>
+                    </div>
+                  </div>
               </div>
-          </div>
-          <div class="col-md-5 col-sm-12 mx-auto my-auto text-center">
-            <p class="mt-0">Ultima leitura: </p>
-            <% if (dados.length < 1){ %>
-              <h2 class="display-4 ultima-leitura">Nenhum dado encontrado</h2>
-            <% } else { %>
-            <h1 class="display-3 ultima-leitura"> </h1>
-            <% } %>
-          </div>
-          <div class="col-sm-12 col-md-4 my-auto text-center">
-            <p>Total / Grafico </p>
-            <h1 class="display-3"> 
-              <span class="total-atual"><%= dados.length %></span> <span>&nbsp;</span> 
-              <a title="Grafico" href="/usuarios/user/<%= session._id %>/sensores/sensor/<%= sensor._id %>/grafico">
-                <i class="fa fa-line-chart"></i>
-              </a>
-            </h1>
-          </div>
+              <div class="col-md-5 col-sm-12 mx-auto my-auto text-center">
+                <p class="mt-0">Ultima leitura: </p>
+                <h1 class="display-4 ultima-leitura"> </h1>
+              </div>
+              <div class="col-sm-12 col-md-4 my-auto text-center">
+                <p>Total / Grafico </p>
+                <h1 class="display-3"> 
+                  <span class="total-atual"><%= dados.length %></span> <span>&nbsp;</span> 
+                  <a title="Grafico" href="/usuarios/user/<%= session._id %>/sensores/sensor/<%= sensor._id %>/grafico">
+                    <i class="fa fa-line-chart"></i>
+                  </a>
+                </h1>
+              </div>
+            </div>
+            <a href="/usuarios/user/<%=session._id%>/sensores" class="btn btn-primary float-right mt-4">Voltar</a>
+            <br>
         </div>
-        <a href="/usuarios/user/<%=session._id%>/sensores" class="btn btn-primary float-right mt-4">Voltar</a>
-        <br>
     </div>
-  
   <script>
       
       unidade = {'corrente':'A','tensao':'V','comprimento':'m','umidade':'%','temperatura':'ºC', 'irradiancia':'w/m2'}
@@ -79,7 +76,11 @@
       
       $(function(){
         var sensor = <%- JSON.stringify( sensor) %>;
-        $('.ultima-leitura').html(<%= parseFloat(dados[dados.length-1].value ).toFixed(2) %>+' '+unidade[sensor.type_sensor] );
+        <% if (dados.length == 0){ %>
+          $('.ultima-leitura').html('Nenhum dado encontrado!');
+        <% } else { %> 
+          $('.ultima-leitura').html(<%= parseFloat(dados[dados.length-1].value ).toFixed(2) %>+' '+unidade[sensor.type_sensor] );
+        <% } %>
       });
 
       $(function(){

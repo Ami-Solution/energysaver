@@ -16,7 +16,6 @@
               <i class="fa fa-check-circle fa-lg"></i> <%=messages.info %>
             </div>
           <% } %>
-
           <h3> 
             <i class="fa fa-user-circle"></i> 
             <%= session.nome.split(' ')[0] +' '+session.nome.split(' ')[1] %>  
@@ -25,12 +24,11 @@
           <br>
           <h5><i class="fa fa-microchip fa-sm"></i> Meus Sensores <a href="/usuarios/user/<%=session._id%>/sensores/adicionar" class="btn btn-primary float-right">Adicionar</a> </h5>
           <hr>
-        
           <% if (sensor.length == 0) { %>
               <h1 class="text-center display-4" colspan="6"> Nenhum sensor adicionado! </h1>
           <% } else { %>  
             <% for (var i = 0; i< sensor.length; i++) { %>
-            <div class="card float-left bg-dark text-light ml-2 mb-2" style="width: 20rem;">
+            <div class="card float-left bg-dark text-light ml-2 mb-2" style="width: 19.5rem;">
               <div class="card-body">
                 <h4 class="card-title p-3"></i> <%= sensor[i].name_sensor %> </h3>
               </div>

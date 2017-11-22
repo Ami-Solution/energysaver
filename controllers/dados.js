@@ -6,7 +6,7 @@ module.exports = function(app) {
         // pagina de dados
         // download dados em csv
         download: function(req, res) {
-            res.download('/home/dalton/projects/nodejs/labic/energysaver_ejs/configs/dados.csv', 'dados.csv');
+            res.download(configs.file_path() ,'dados.csv');
         },
         // pagina de resultados
         search: function(req, res) {

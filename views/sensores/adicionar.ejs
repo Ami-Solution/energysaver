@@ -22,33 +22,33 @@
             <form class="col-md-10 mx-auto" action="/usuarios/user/<%= session._id %>/sensores/adicionar" method="post">
                 <div class="row mb-2">
                   <div class="input-group">
-                    <span class="input-group-addon col-5 col-md-3 bg-dark text-white">Nome</span>
+                    <span class="input-group-addon col-5 col-md-4 bg-dark text-white">Nome</span>
                     <input type="text" class="form-control d-none" name="user" value="<%=session.user%>">                
                     <input type="text" class="form-control" name="name_sensor" value="<%=sensor.name_sensor%>" required placeholder="ex.: corrente-01">
                   </div>
                 </div>
                 <div class="row mb-2">
                   <div class="input-group">
-                    <span class="input-group-addon col-5 col-md-3 bg-dark text-white">Tipo </span>
+                    <span class="input-group-addon col-5 col-md-4 bg-dark text-white">Tipo </span>
                     <input type="text" class="form-control" name="type_sensor" value="<%=sensor.type_sensor%>" required placeholder="ex.: corrente">
                   </div>
                 </div>
                 <div class="row mb-2">
                   <div class="input-group">
-                    <span class="input-group-addon col-5 col-md-3 bg-dark text-white">Modelo </span>
+                    <span class="input-group-addon col-5 col-md-4 bg-dark text-white">Modelo </span>
                     <input type="text" class="form-control" name="model_sensor" value="<%=sensor.model_sensor%>" required placeholder="ex.: ACS712">
                   </div>
                 </div>
                 <div class="row mb-2">
                   <div class="input-group">
-                    <span class="input-group-addon col-5 col-md-3 bg-dark text-white">Local </span>
+                    <span class="input-group-addon col-5 col-md-4 bg-dark text-white">Local </span>
                     <input type="text" class="form-control" name="local" value="<%=sensor.local%>" required placeholder="ex.: labic">
                   </div>
                 </div>
                 <div class="row mb-2">
                   <div class="input-group">
-                    <span class="input-group-addon col-5 col-md-3 bg-dark text-white">Dispositivo </span>
-                    <input type="text" class="form-control" name="device" value="<%=sensor.device%>" required placeholder="ex.: labic">
+                    <span class="input-group-addon col-5 col-md-4 bg-dark text-white">Dispositivo </span>
+                    <input type="text" class="form-control" name="device" value="<%=sensor.device%>" required placeholder="ex.: raspberry pi">
                   </div>
                 </div>
                 <div class="row mb-2">

@@ -1,6 +1,11 @@
+
 var fs = require('fs');
 
 var file = __dirname + '/dados.csv';
+
+function file_path(){
+    return file;
+}
 
 function data_csv_generator(data) {
     fs.unlink(file, function(err) {});
@@ -61,10 +66,9 @@ function data_chart(data) {
     return { data: values, labels: hours };
 }
 
-
-
 module.exports = {
     data_csv_generator,
     all_data_csv_generator,
-    data_chart
+    data_chart,
+    file_path
 }
