@@ -43,8 +43,8 @@ module.exports = function(app){
                                     req.flash('erro','Erro ao salvar cadastro!');
                                     res.render('usuarios/cadastrar',{user:req.body});
                                 }else{
-                                    req.flash('info','Usuário cadastrado!');
-                                    res.redirect('/usuarios');
+                                    req.flash('erro','Faça login para entrar!');
+                                    res.render('login/index');
                                 }
                             });
                         }
