@@ -54,6 +54,7 @@
               <div class="col-md-5 col-sm-12 mx-auto my-auto text-center">
                 <p class="mt-0">Ultima leitura: </p>
                 <h1 class="display-4 ultima-leitura"> </h1>
+                <h1 class="sem-dados"> </h1>
               </div>
               <div class="col-sm-12 col-md-4 my-auto text-center">
                 <p>Total / Grafico </p>
@@ -77,8 +78,9 @@
       $(function(){
         var sensor = <%- JSON.stringify( sensor) %>;
         <% if (dados.length == 0){ %>
-          $('.ultima-leitura').html('Nenhum dado encontrado!');
+          $('.sem-dados').html('Nenhum dado encontrado!');
         <% } else { %> 
+          $('.sem-dados').html('')
           $('.ultima-leitura').html(<%= parseFloat(dados[dados.length-1].value ).toFixed(2) %>+' '+unidade[sensor.type_sensor] );
         <% } %>
       });
@@ -97,6 +99,7 @@
               }
               if (dados.user == sensor.user && dados.name_sensor == sensor.name_sensor && dados.model_sensor == sensor.model_sensor && dados.type_sensor == sensor.type_sensor && dados.device == sensor.device && dados.local == sensor.local ){
                 total_atual++;
+                $('.sem-dados').html('')
                 $('.ultima-leitura').html(parseFloat(msg.msg['value']).toFixed(2)+' '+unidade[dados.type_sensor] );
                 $('.total-atual').html(total_atual);
               }else{

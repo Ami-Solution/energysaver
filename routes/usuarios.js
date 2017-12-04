@@ -4,9 +4,9 @@ module.exports =function(app){
 
     app.route('/usuarios').get(autenticar, usuarios.index);
 
-    app.route('/usuarios/cadastrar')
-        .get(autenticar, usuarios.cadastrar)
-        .post(autenticar, usuarios.post);
+    app.route('/cadastrar')
+        .get(usuarios.cadastrar)
+        .post(usuarios.post);
     
     app.route('/usuarios/user/:id').get(autenticar, usuarios.user);
 
