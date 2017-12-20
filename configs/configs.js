@@ -1,7 +1,7 @@
 
 var fs = require('fs');
 
-var file = __dirname + '/dados.csv';
+var file = __dirname + '/data.csv';
 
 function file_path(){
     return file;
@@ -10,7 +10,7 @@ function file_path(){
 function data_csv_generator(data) {
     fs.unlink(file, function(err) {});
 
-    fs.appendFile(file, "id,user,local,device,day,hour,type,model,value\n", function(err) {
+    fs.appendFile(file, "id,name_sensor, user,local,device,day,hour,type,model,value\n", function(err) {
         if (err) throw err;
     });
     for (var i = data.length - 1; i >= 0; i--) {
@@ -33,7 +33,7 @@ function data_csv_generator(data) {
 function all_data_csv_generator(data) {
     fs.unlink(file, function(err) {});
 
-    fs.appendFile(file, "id,user,local,device,day,hour,type,model,value\n", function(err) {
+    fs.appendFile(file, "id,name_sensor,user,local,device,day,hour,type,model,value\n", function(err) {
         if (err) throw err;
     });
     for (var i = 0; i < data.length; i++) {
