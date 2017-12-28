@@ -6,7 +6,7 @@ module.exports = function(app) {
         // pagina de dados
         // download dados em csv
         download: function(req, res) {
-            res.download(configs.file_path() ,'dados.csv');
+            res.download(configs.file_path() ,'dt.csv');
         },
         // pagina de resultados
         search: function(req, res) {
@@ -14,6 +14,7 @@ module.exports = function(app) {
                 if (err) {
                     console.log(err);
                 } else {
+                    configs.delete_old_data();
                     configs.data_csv_generator(data);
                     var docs = configs.data_chart(data);
                     res.render('dados/search', { dados: docs, day_search: req.query.day });

@@ -1,15 +1,13 @@
 
-var fs = require('fs');
-
-var file = __dirname + '/data.csv';
+var fs = require('graceful-fs');
+var name_file = '/data', extension='.csv';
+var file = __dirname + name_file + extension;
 
 function file_path(){
     return file;
 }
 
 function data_csv_generator(data) {
-    fs.unlink(file, function(err) {});
-
     fs.appendFile(file, "id,name_sensor, user,local,device,day,hour,type,model,value\n", function(err) {
         if (err) throw err;
     });
@@ -30,9 +28,12 @@ function data_csv_generator(data) {
 
     }
 }
-function all_data_csv_generator(data) {
-    fs.unlink(file, function(err) {});
 
+function delete_old_data(){
+    fs.unlink(file, function(err) {});
+}
+
+function all_data_csv_generator(data) {
     fs.appendFile(file, "id,name_sensor,user,local,device,day,hour,type,model,value\n", function(err) {
         if (err) throw err;
     });
@@ -51,7 +52,6 @@ function all_data_csv_generator(data) {
         fs.appendFile(file, id+','+name_sensor+','+user+','+local+','+device+','+day+','+hour+','+type+','+model+','+value+'\n', function(err) {
             if (err) throw err;
         });
-
     }
 }
 
@@ -67,6 +67,7 @@ function data_chart(data) {
 }
 
 module.exports = {
+    delete_old_data,
     data_csv_generator,
     all_data_csv_generator,
     data_chart,

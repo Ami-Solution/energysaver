@@ -114,12 +114,12 @@ module.exports = function(app) {
                     device = sensor.device;
 
                     var query = {'name_sensor':nome,'user':user,'type_sensor':tipo, 'model_sensor':modelo, 'local':local,'device': device};
-                    //var query = {'_id': req.params.id_sensor};
                     Dados.find(query, function(err, data){
                         if (err){
                             req.flash('erro', 'Erro ao buscar sensor: '+err);
                             res.redirect('/usuarios/user/'+req.params.id_user+'/sensores');
                         }else {
+                            configs.delete_old_data();
                             configs.all_data_csv_generator(data);
                             res.render('sensores/sensor', {sensor:sensor, dados:data});
                         }
