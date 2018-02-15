@@ -152,6 +152,36 @@ module.exports = function(app) {
                     }).sort({$natural:-1}).limit(75);
                 }
             });
+        },
+        locais: function(req, res){
+            var id_user = req.params.id_user;
+            Usuarios.findOne({'_id':id_user},function(err, data){
+                Sensores.find({'user': data.user}, function(err, sensores){
+                    if (err) {
+                        req.flash('erro','Erro ao buscar sensor: '+err);
+                        res.redirect('/usuarios/user/'+req.params.id_user);
+                    }else {
+                        var locais = [];
+                        for (i=0;i<sensores.length;i++){
+                            locais.push(sensores[i].local)
+                        }
+                        //elimina locais repetidos
+                        var novo_local = [...new Set(locais)];
+                        res.render('sensores/locais',{locais: novo_local});
+                    }
+                });
+            });
+        },
+        local:function(req, res){
+            var local = req.params.local;
+            var id_user = req.params.id_user;
+            console.log(local);
+            Usuarios.findOne({'_id':id_user},function(err, data){
+                Sensores.find({'user': data.user,local:local}, function(err, sensores){
+                    console.log(sensores);
+                    res.render('sensores/index',{sensor: sensores});
+                });
+            });
         }
     }
     return SensoresController;

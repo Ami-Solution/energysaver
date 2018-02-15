@@ -6,11 +6,12 @@
     <nav class="menu">
     <a href="#" class="btn-close"><i class="fa fa-close"></i></a>
     <ul>
-        <li><a href="/home">Home</a></li>
+        <li><a href="/home"><i class="fa fa-home"></i><span>&nbsp;</span> Home</a></li>
         <!-- <li><a href="/usuarios">Usuarios</a></li> -->
-        <li><a href="/usuarios/user/<%= session._id %>/sensores">Sensores</a></li>
-        <li><a href="/usuarios/user/<%= session._id %>"><%= session.nome.split(" ")[0] %></a></li>
-        <li><a href="/logout">Sair</a></li>
+        <li><a href="/usuarios/user/<%= session._id %>/sensores"><i class="fa fa-microchip"></i><span>&nbsp;</span> Sensores</a></li>
+        <li><a href="/usuarios/user/<%= session._id %>"><i class="fa fa-user"></i><span>&nbsp;</span> <%= session.nome.split(" ")[0] %></a></li>
+        <li><a href="/usuarios/user/<%= session._id %>/locais"><i class="fa fa-map-marker"></i><span>&nbsp;</span> Locais</a></li>
+        <li><a href="/logout"><i class="fa fa-sign-out"></i><span>&nbsp;</span> Sair</a></li>
     </ul>
     </nav>
 </header>

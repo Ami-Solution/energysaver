@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <% include ../partials/head %>
+  <% include ../partials/header %>
+  <body>
+  <br>
+  <main class="conteiner mb-0">
+      <div class="container">
+          <% if(messages.erro) { %>
+            <div class="alert alert-danger alert-dismissible fade show col-md-12 mx-auto" role="alert">
+             <i class="fa fa-exclamation-triangle fa-lg"></i> <%=messages.erro %>
+            </div>
+          <% } %>
+          <% if(messages.info) { %>
+            <div class="alert alert-success alert-dismissible fade show col-md-12 mx-auto" role="alert">
+              <i class="fa fa-check-circle fa-lg"></i> <%=messages.info %>
+            </div>
+          <% } %>
+          <h3> 
+            <i class="fa fa-user-circle"></i><span>&nbsp;</span>
+            <%= session.nome.split(' ')[0] +' '+session.nome.split(' ')[1] %>  
+            <a href="/usuarios/user/<%=session._id %>" class="btn btn-primary float-right">Voltar</a>
+          </h3>
+          <br>
+          <h5><i class="fa fa-map-marker fa-lg"><span>&nbsp;</span> </i> Meus locais </h5>
+          <hr>
+          <% if (locais.length == 0) { %>
+              <h1 class="text-center display-4" colspan="6"> Nenhum local encontrado! </h1>
+          <% } else { %>  
+            <% for (var i = 0; i< locais.length; i++) { %>
+            <div class="card float-left bg-dark text-light ml-2 mb-3" style="width: 19.5rem;">
+                <div class="card-body">
+                    <h3 class="card-title py-2 px-3 mt-2 mb-2"></i><i class="fa fa-map-marker"></i><span>&nbsp;</span> <%= locais[i] %> </h3>
+                </div>
+                <a href="/usuarios/user/<%=session._id %>/locais/<%= locais[i] %> " class="btn btn-primary float-right">Ver sensores</a>
+            </div>
+          <% } %>
+        <% } %> 
+          <br>
+      </div>
+  </main>
+    
+  </body>
+  <% include ../partials/footer %>
+</html>

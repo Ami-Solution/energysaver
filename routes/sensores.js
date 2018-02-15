@@ -3,7 +3,7 @@ module.exports = function(app) {
     var autenticar = require('../middleware/autenticar');
 
     app.route('/usuarios/user/:id_user/sensores').get(autenticar, sensores.index);
-    
+
     app.route('/usuarios/user/:id_user/sensores/adicionar')
         .get(autenticar, sensores.adicionar)
         .post(autenticar, sensores.post);
@@ -18,4 +18,7 @@ module.exports = function(app) {
 
     app.route('/usuarios/user/:id_user/sensores/sensor/:id_sensor/grafico').get(autenticar, sensores.grafico);
 
+    app.route('/usuarios/user/:id_user/locais').get(autenticar, sensores.locais);
+
+    app.route('/usuarios/user/:id_user/locais/:local').get(autenticar, sensores.local);
 }

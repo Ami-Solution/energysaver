@@ -20,7 +20,7 @@
               <div class="col-sm-12 col-md-3 mb-4">
                 <div class="card float-left bg-dark text-light mb-2" style="width: 20.5rem;">
                     <div class="card-body">
-                      <h4 class="card-title p-3"> <%= sensor.name_sensor %> 
+                      <h4 class="card-title p-3"><i class="fa fa-microchip"></i><span>&nbsp;</span> <%= sensor.name_sensor %> 
                         <a class="float-right" href="/usuarios/user/<%= session._id %>/sensores/editar/<%= sensor._id %>">
                         <button type="button" class="btn btn-primary">
                           <i class="fa fa-pencil"></i>
@@ -52,12 +52,12 @@
                   </div>
               </div>
               <div class="col-md-5 col-sm-12 mx-auto my-auto text-center">
-                <p class="mt-0">Ultima leitura: </p>
+                <p class="mt-0">Última leitura: </p>
                 <h1 class="display-4 ultima-leitura"> </h1>
                 <h1 class="sem-dados"> </h1>
               </div>
               <div class="col-sm-12 col-md-4 my-auto text-center">
-                <p>Total / Grafico </p>
+                <p>Total / Gráfico </p>
                 <h1 class="display-3"> 
                   <span class="total-atual"><%= dados.length %></span> <span>&nbsp;</span> 
                   <a title="Grafico" href="/usuarios/user/<%= session._id %>/sensores/sensor/<%= sensor._id %>/grafico">
